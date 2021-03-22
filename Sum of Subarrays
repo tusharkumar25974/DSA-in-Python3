@@ -1,0 +1,11 @@
+class Solution:
+    def subarraySum(self, a, n):
+        # code here 
+        y = pow(10,9)
+        x = y+7
+        ans  = 0
+        for i in range(n):
+            ans+= ((a[i] * (i+1) * (n-i)))
+            
+            #ans+= ((((i+1)%x)*((n-i)%x))%x*(a[i]%x))%x
+        return ans%x
