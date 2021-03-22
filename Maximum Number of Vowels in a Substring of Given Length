@@ -1,0 +1,30 @@
+class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+        '''
+        total = 0
+        for i in range(len(s)):
+            #len(s) and not string s in range
+            if s[i] == "a" or s[i] == "e" or s[i] == "i" or s[i] == "o" or s[i] == "u":
+                
+                total+=1
+                '''
+        freq = 0
+        max_freq = float('-inf')
+        for i in range(k):
+            if s[i] == "a" or s[i] == "e" or s[i] == "i" or s[i] == "o" or s[i] == "u":
+                freq +=1
+            # use alphabets i.e strings under quotes
+        max_freq = max(freq, max_freq)
+        for i in range(k,len(s)):
+            #edge case what if there is less than k elements in len(s)
+            
+            if s[i-k] == "a" or s[i-k] == "e" or s[i-k] == "i" or s[i-k] == "o" or s[i-k] == "u":
+                freq-=1
+            if s[i] == "a" or s[i] == "e" or s[i] == "i" or s[i] == "o" or s[i] == "u":
+                freq+=1
+            max_freq = max(freq, max_freq)
+        return max_freq
+            
+            
+            
+                
