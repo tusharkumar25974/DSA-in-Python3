@@ -1,0 +1,29 @@
+def minSwap (arr, n, k) : 
+    #Complete the function
+    countLegal = 0
+    for i in range(n):
+        if arr[i]<=k:
+            countLegal+=1
+    
+    count = 0
+    max_count = float('-inf') 
+    x = countLegal
+    for m in range(0,x):
+        if arr[m] <=k:
+            count +=1
+            
+    max_count = max(max_count,count)
+    for j in range(x,n):
+        
+        if arr[j-x]<=k:
+            count-=1
+        if arr[j] <=k:
+            count+=1
+        max_count = max(max_count,count)
+    
+    minswaps = x-max_count
+    return minswaps
+        
+        
+        
+    
