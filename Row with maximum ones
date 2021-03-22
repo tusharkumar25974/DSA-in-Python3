@@ -1,0 +1,26 @@
+class Solution:
+
+	def rowWithMax1s(self,arr, n, m):
+	    
+	    i = 0
+	    j = m-1
+	    ans_row = 0
+	    ans = 0
+	    while i<(n) and j>=0:
+	        if arr[i][j] == 0:
+	            i+=1
+	        else:
+	            j-=1               #how jumped to counting nos
+	        no_of_ones = m-1-j   #difficult to think
+	        if no_of_ones>ans:
+	            ans = no_of_ones
+	            ans_row = i
+	    if no_of_ones == 0:
+	       return -1
+	            
+	   
+	   
+	    return ans_row
+	       
+	   
+	       
