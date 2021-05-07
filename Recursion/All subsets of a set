@@ -1,0 +1,60 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        out = [0]*len(nums)
+        arr= []
+        return self.recurse(nums,len(nums),0,arr,out,0)  #final output here arr 
+        
+    def recurse(self,nums,n,idx,arr,out,sz):
+        
+        if idx == n:
+            print(out[:sz]) #otherwise it was covering whole array, I wanted just till sz
+            arr.append(out[:sz])
+            
+            return
+        out[sz]=nums[idx]
+        self.recurse(nums,n,idx+1,arr,out,sz+1)
+        self.recurse(nums,n,idx+1,arr,out,sz)   #no need to do return self.recurse...
+        return arr
+    
+    
+    
+    '''
+    class Solution:
+    
+    def subsets(self, nums: List[int], index : int, curr = []) -> List[List[int]]:
+        
+        if index == len(nums):
+            print(curr)
+            return
+        return self.subsets(nums,index+1,curr.append(nums[index]))
+        
+        return self.subsets(nums,index+1,curr)
+        
+        
+        
+        
+        
+
+ans=[]
+l=len(nums)
+p=2**(l)
+for i in range(p):
+    k=[]
+    for j in range(l):
+
+        if i & (1<<j)>0:
+            k.append(nums[j])
+    ans.append(k)
+return ans
+
+
+n = len(nums)
+output = [[]]
+
+for num in nums:
+    output += [curr + [num] for curr in output]
+
+return output
+
+'''
+
