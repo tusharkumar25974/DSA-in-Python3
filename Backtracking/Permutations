@@ -1,0 +1,73 @@
+#import sys
+#sys.setrecursionlimit(10**6 or 10**5 both tried)
+#import sys
+#print(sys.getrecursionlimit())
+import sys
+sys.setrecursionlimit(550000)
+'''
+class Solution(object):
+    def permute(self, nums):
+        ans=[]
+        def perm(nums,start):
+            if start==len(nums)-1:
+                ans.append(nums) 
+                return
+            for j in range(start,len(nums)):
+                nums[j],nums[start]=nums[start],nums[j] 
+                perm(nums[:],start+1)  
+        perm(nums,0)
+        return ans
+
+
+
+class Solution:
+    print(sys.getrecursionlimit())
+    i = 0
+    def permute(self, nums: List[int], i) -> List[List[int]]:
+                                                  
+                                                  
+                                                  
+        
+        out = []
+        if len(nums) == 1:
+            out.append([nums])
+        print(out)
+
+        #out = []
+        arr = []
+        if i == len(nums)-1:
+            out.append(arr)
+           
+        for j in range(i,len(nums)):
+            i = 0
+        
+        
+            nums[i],nums[j] = nums[j],nums[i]
+            #i+=1
+            self.permute(nums,i+1)
+            nums[i],nums[j] = nums[j],nums[i]
+            
+        return out
+'''    
+    
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        return self.perm(nums,0,[])
+    
+    def perm(self,nums,i=0,out = []):
+        if i >= len(nums):
+            out.append(nums[:])
+            return out
+        for j in range(i,len(nums)):
+            nums[i],nums[j] = nums[j],nums[i]
+            self.perm(nums,i+1,out)
+            nums[i],nums[j] = nums[j],nums[i]
+        return out
+
+    
+    
+    
+    
+    
+        
+        
