@@ -9,9 +9,10 @@ class Solution:
         if idx == n:
             print(out[:sz]) #otherwise it was covering whole array, I wanted just till sz
             arr.append(out[:sz])
-            
+            print(out,"a") #sz variable is doing the trick here, to overide and insert at new index
             return
         out[sz]=nums[idx]
+        #self.recurse(nums,n,idx+1,arr,out,sz) #No is not before yes here
         self.recurse(nums,n,idx+1,arr,out,sz+1)
         self.recurse(nums,n,idx+1,arr,out,sz)   #no need to do return self.recurse...
         return arr
