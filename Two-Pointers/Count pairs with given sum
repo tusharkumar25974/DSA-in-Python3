@@ -1,0 +1,72 @@
+#User function Template for python3
+
+class Solution:
+    def getPairsCount(self, arr, n, k):
+        # code here
+        arr = sorted(arr)
+        ans = 0
+        i = 0 
+        j = n-1
+        while i<j:
+            curr = arr[i]+arr[j]
+            if curr>k:
+                j-=1
+            elif curr<k:
+                i+=1
+            elif arr[i]==arr[j]:
+                l = j-i+1
+                ans+=l*(l-1)/2
+            else:
+                v1 = arr[i]
+                v2 = arr[j]
+                c1 = 0
+                c2 = 0
+                
+                while arr[i]==v1:
+                    i+=1
+                    c1+=1
+                while arr[j] == v2:
+                    j-=1
+                    c2+=1
+                ans+= c1*c2
+        return ans
+            
+                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        #Brute force approach
+        #count= 0
+        #for i in range(n):
+        #    for j in range(i+1,n):
+        #        if arr[i]+arr[j]==k:
+        #            count+=1
+        #return count
+
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__':
+    tc = int(input())
+    while tc > 0:
+        n, k = list(map(int, input().strip().split()))
+        arr = list(map(int, input().strip().split()))
+        ob = Solution()
+        ans = ob.getPairsCount(arr, n, k)
+        print(ans)
+        tc -= 1
+
+# } Driver Code Ends
