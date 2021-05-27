@@ -27,8 +27,8 @@ class Solution:
                 out.append(x)
                 out.append(y)
                 return out
-        return -1
-                        
+        #return -1
+        return [-1]  #returning -1 was giving error as that cannot be iterated over, it can only be some iterable                
 
 #{ 
 #  Driver Code Starts
