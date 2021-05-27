@@ -1,0 +1,16 @@
+class Solution:
+	def hasArrayTwoCandidates(self,arr, n, x):
+		# code here
+		arr = sorted(arr)
+		i = 0
+		j = n-1
+		
+		while i<j:
+		    curr = arr[i]+arr[j]
+		    
+		    if curr == x:
+		        return True
+		    elif curr<x:
+		        i+=1
+		    else:
+		        j-=1
