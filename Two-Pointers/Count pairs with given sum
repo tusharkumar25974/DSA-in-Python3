@@ -31,7 +31,7 @@ class Solution:
                 ans+= c1*c2
         return ans
             
-                
+     
         
         
         
