@@ -1,0 +1,57 @@
+#User function Template for python3
+
+class Solution:
+	def TotalPairs(self, nums, k):
+		# Code here
+		#Assuming k is positive, which is given here
+		nums = sorted(nums)
+		i = 0
+		j = 1
+		c = 0
+		while j<len(nums):
+		    if nums[j]-nums[i]<k:
+		        j+=1
+		    elif nums[j]-nums[i]>k:
+		        i+=1
+		        if i==j:
+		            j+=1
+		    else:
+		        c1 = 0
+		        c2 = 0
+		        p = nums[i]
+		        q = nums[j]
+		        if k == 0:
+		            while i<len(nums) and nums[i]==p:
+		                c1+=1
+		                i+=1
+		                j+=1
+		            c+= c1*(c1-1)/2
+		        else:
+		            while i<len(nums) and nums[i] == p:
+		                c1+=1
+		                i+=1
+		            while j<len(nums) and nums[j] == q:
+		                c2+=1
+		                j+=1
+		            c+=c1*c2
+		return int(c)
+		          
+		        
+		
+		
+
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__':
+	T=int(input())
+	for i in range(T):
+		n, k = input().split()
+		n = int(n)
+		k = int(k)
+		nums = list(map(int,input().split()))
+		ob = Solution()
+		ans = ob.TotalPairs(nums, k)
+		print(ans)
+# } Driver Code Ends
