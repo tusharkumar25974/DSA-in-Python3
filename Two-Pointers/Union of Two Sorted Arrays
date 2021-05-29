@@ -1,0 +1,136 @@
+#User function Template for python3
+
+class Solution:
+    
+    #Function to return a list containing the union of the two arrays.
+    def mergeArrays(self,a,b,n,m):
+        i =0
+        j = 0
+        out = []
+        while i<n and j<m:
+            p = a[i]
+            q = b[j]
+            if a[i]==b[j]:
+                out.append(a[i])
+                i+=1
+                j+=1
+                while i<n and p == a[i]:
+                    i+=1
+                while j<m and q == b[j]:   #while q == b[j] keval ye gives list index out of range so need another check whike j<m
+                    j+=1
+            elif a[i]<b[j]:
+                p = a[i]
+                out.append(a[i])
+                i+=1
+                while i<n and p == a[i]:   #Forgot to keep another check of i<n coz of which we got index out of bound error
+                    i+=1
+            elif b[j]<a[i]:
+                q = b[j]
+                out.append(b[j])
+                j+=1
+                while j<m and q == b[j]:
+                    j+=1
+            
+        while i<n:
+            p = a[i]
+            out.append(a[i])
+            i+=1    # Mistake to not put this and while loop was giving memory error
+            while i<n and p == a[i]:  # This is needed here too taaki remaining ein se duplicates copy na ho
+                i+=1
+        while j<m:
+            q = b[j]
+            out.append(b[j])
+            j+=1     # Mistake to not put this and while loop was giving memory error
+            while j<m and q == b[j]:
+                j+=1
+        return out
+            
+                    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        '''
+        :param a:  given sorted array a
+        :param n: size of sorted array a
+        :param b: given sorted array b
+        :param m: size of sorted array b
+        :return:  The union of both arrays as a list
+        
+        i = 0
+        j = 0
+        out = []
+        while i<n and j<m:
+            if a[i]<b[j]:
+                out.append(a[i])
+                i+=1
+                if a[i-1]==a[i]:
+                    i+=1
+                    while i<n:
+                        if a[i-1]==a[i]:
+                            i+=1
+            elif b[j]<a[i]:
+                out.append(b[j])
+                j+=1
+                while j<m:
+                    if b[j-1]==b[j]:
+                        j+=1
+                    
+            else:
+                out.append(a[i])
+                i+=1
+                j+=1
+                while i<n-1:
+                    if a[i-1]==a[i]:
+                        i+=1
+                while j<m-1:
+                    if b[j-1]==b[j]:
+                        j+=1
+        return out                
+                    
+                    
+            
+            
+                
+        # code here 
+
+
+        '''
+
+
+
+
+
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+# Contributed by : Nagendra Jha
+# Modified by : Sagar Gupta
+
+
+if __name__ == '__main__':
+    test_cases = int(input())
+    for cases in range(test_cases) :
+        n,m = map(int,input().strip().split())
+        a = list(map(int,input().strip().split()))
+        b = list(map(int,input().strip().split()))
+        ob=Solution()
+        li = ob.mergeArrays(a,b,n,m)
+        for val in li:
+            print(val, end = ' ')
+        print()
+# } Driver Code Ends
