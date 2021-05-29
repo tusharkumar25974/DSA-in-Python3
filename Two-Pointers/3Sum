@@ -1,0 +1,42 @@
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums = sorted(nums)
+        out = []
+        #arr = [] not declaring it globally
+        for i in range(len(nums)):
+            if i>0 and nums[i]==nums[i-1]:
+                continue
+            else:
+                rem = -1*nums[i]
+                #print(rem)
+                p1 = i+1
+                p2 = len(nums)-1
+                
+                while p1<p2:
+                    if nums[p1]+nums[p2]<rem:
+                        p1+=1
+                        #print(p1)
+                    elif nums[p1]+nums[p2]>rem:
+                        p2-=1
+                    else:
+                        #print("hello")
+                        arr = [] #declaring it locally
+                        arr.append(nums[i])
+                        arr.append(nums[p1])
+                        arr.append(nums[p2])
+                        out.append(arr)
+                        #print(out)
+                        if nums[p1]==nums[p2]:
+                            break #resulting in nothing new 2*nums[p1] = nums[i] and useless
+                        else:
+                            x = nums[p1]
+                            y = nums[p2]
+                            while nums[p1]==x:
+                                p1+=1
+                            while nums[p2]==y:
+                                p2-=1
+        return out
+                                
+                        
+        
+        
