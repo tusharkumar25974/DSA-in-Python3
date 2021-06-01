@@ -1,0 +1,37 @@
+#User function Template for python3
+class Solution:
+	def getNthUglyNo(self,n):
+		# code here
+		arr = [0]*n
+		arr[0]=1
+		p1 = 0
+		p2 = 0
+		p3 = 0
+		
+		for i in range(1,n):
+		    val = min(arr[p1]*2,min(arr[p2]*3,arr[p3]*5))
+		    arr[i] = val
+		    if val == arr[p1]*2:
+		        p1+=1
+		    if val == arr[p2]*3:
+		        p2+=1
+		    if val == arr[p3]*5:
+		        p3+=1
+		return arr[n-1]
+
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+
+
+if __name__ == '__main__':
+    tc = int(input())
+    while tc > 0:
+        n = int(input())
+        ob = Solution()
+        ans = ob.getNthUglyNo(n);
+        print(ans)
+        tc -= 1
+
+# } Driver Code Ends
