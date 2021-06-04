@@ -1,0 +1,17 @@
+class Solution:
+    def totalHammingDistance(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        mask = (1<<31)
+        for i in range(31,-1,-1):
+            count = 0
+            for j in range(n):
+                if (mask & nums[j]):    #This line is not working here, 
+                    count+=1
+            X = count
+            Y = n-X
+            ans += X*Y
+            mask>>=1                     #It was because of this >>1 , instead it should be >>=1, missed the equal to initially
+        return ans
+                    
+        
