@@ -1,0 +1,34 @@
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        arr = nums[:]
+        K = k
+        m = {}
+        psum = 0
+        m[0]=1
+        #max_length = 0
+        count = 0
+        for i in range(len(arr)):
+            psum+=arr[i]
+            #print(m[0])
+            if psum-K in m:
+                #print(i,psum)
+                #print(99,i-m[0])
+                count += m[psum-K]
+                #print(max_length)
+                
+            if psum not in m:
+                m[psum] = 1
+            else:
+                m[psum]+=1
+            
+            #This else will not be there    
+            #else:
+                   #Why this else thing made so much of difference??
+            #    m[psum] = i
+            #print(psum,i)
+            
+        return count
+            
+        
+        
+        
