@@ -1,0 +1,19 @@
+class Solution:
+    def singleNumber(self, nums: List[int]) -> List[int]:
+        overallXOR = 0
+        for i in range(len(nums)):
+            overallXOR ^= nums[i]
+            
+        LSB = 1
+        while not LSB & overallXOR:
+            LSB<<=1
+        val1 = 0
+        for i in range(len(nums)):
+            if nums[i]&LSB:
+                val1 ^= nums[i]
+        
+        val2 = val1^overallXOR
+        
+        return [val1,val2]
+            
+        
