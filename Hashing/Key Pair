@@ -1,0 +1,31 @@
+class Solution:
+	def hasArrayTwoCandidates(self,arr, n, x):
+		# code here
+		my_dict = {}
+		#print(my_dict)
+		#POPULATING THE DICTIONARY
+		for i in range(len(arr)):
+		    my_dict[arr[i]] = 0 #assignment #This way doesn't work coz repeated is set to zero every time
+		for i in range(len(arr)):
+		    my_dict[arr[i]]+=1  #increment
+		#print(my_dict)
+		
+		for i in range(len(arr)):
+		    if self.checkKey(my_dict,x-arr[i])!= ("Not present"):  #find returns -1 if it doesnt exist
+		        f = my_dict[x-arr[i]]
+		        if arr[i] == x-arr[i] and f>1:  #if element is half of x and it is repeated
+		            return True
+		        elif arr[i]!=x-arr[i]:          #if two numbers which are added are not same
+		            return True
+		return False
+		
+	def checkKey(self,my_dict, key):
+      
+        if key in my_dict:
+            #print("Present, ", end =" ")
+            return my_dict[key]
+        else:
+            return ("Not present")
+    		      
+		        
+		
