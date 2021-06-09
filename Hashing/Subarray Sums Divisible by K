@@ -1,0 +1,31 @@
+class Solution:
+    def subarraysDivByK(self, nums: List[int], k: int) -> int:
+        arr = nums[:]
+        K = k
+        m = {}
+        psum = 0
+        r = 0
+        m[0]=1
+        #max_length = 0
+        count = 0
+        for i in range(len(arr)):
+            psum+=arr[i]
+            #print(psum)
+            r = psum%K
+            #print(r)
+            if r in m:
+                count += m[r]
+                
+            if r not in m:
+                m[r] = 1
+            else:
+                m[r]+=1
+            
+            #This else will not be there    
+            #else:
+                   #Why this else thing made so much of difference??
+            #    m[psum] = i
+            #print(psum,i)
+            
+        return count
+        
