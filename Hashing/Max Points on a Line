@@ -1,0 +1,54 @@
+class Solution:
+    def maxPoints(self, points: List[List[int]]) -> int:
+        m = {}
+        if len(points)==0:
+            return 0
+        ans = 1
+        
+        for i in range(len(points)):
+            olp = 0
+            maxm = 0
+            for j in range(i+1,len(points)):
+                #print(maxm)
+                if points[i][0] == points[j][0] and points[i][1] == points[j][1]:
+                    olp+=1
+                else:
+                    dx = points[j][0]-points[i][0]
+                    dy = points[j][1]-points[i][1]
+                g = gcd(abs(dx),abs(dy))
+                f = dx/g
+                s = dy/g
+                f,s = self.std(f,s)  #This was not working because it wasn't returning
+                
+                if str([f,s]) not in m:
+                    m[str([f,s])] = 1
+                else:
+                    m[str([f,s])]+=1
+                        
+                maxm = max(maxm,m[str([f,s])])
+                #print(maxm)
+            ans = max(ans,maxm+olp+1)
+            m = {}
+                
+        return ans      
+                    
+
+    
+    
+    def gcd(x,y):
+        if y ==0:
+            return x
+        else:
+            return gcd(y,x%y)
+    
+    def std(self,n,d):
+        if n == 0:
+            d = 1
+        elif d == 0:
+            n = 1
+        elif (n<0 and d<0) or d<0:
+            n*=-1
+            d*=-1
+        return n,d    
+        
+        
