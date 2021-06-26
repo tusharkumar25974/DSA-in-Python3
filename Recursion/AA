@@ -1,0 +1,62 @@
+
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        out = [0]*k
+        arr= []
+        
+        input_arr = []
+        for i in range(1,n+1):
+            input_arr.append(i)
+        return self.recurse(input_arr,len(input_arr),0,arr,out,0,k)
+            
+        #return self.recurse(input_arr,n,0,[],[],k)
+    def recurse(self,input_arr,n,idx,arr,out,sz,k):
+        if sz == k:
+        #if idx == n:
+       
+    #and len(out)==k:
+            #if sz==k:
+            #print(out[:sz]) #otherwise it was covering whole array, I wanted just till sz
+            arr.append(out[:])
+
+            return
+        if idx == n:  
+            return
+        #else:
+        #    return
+        #print(sz,"b4")
+        out[sz]=input_arr[idx]
+        #print(sz)
+        if sz<=k:  #while vs if: 
+            print(idx,sz)
+            if sz+1<=k:
+                self.recurse(input_arr,n,idx+1,arr,out,sz+1,k)
+            
+            self.recurse(input_arr,n,idx+1,arr,out,sz,k)   #no need to do return #self.recurse...
+        return arr
+
+'''
+    def recurse(self,input_arr,n,idx,out,arr, k ):
+        out.append(input_arr[idx])
+        #arr = []
+    
+        while idx<n:
+            
+            if len(out) == k:
+                print(out)
+                arr.append(out)
+                return
+            
+            self.recurse(input_arr,n,idx+1,out,arr,k)
+            
+            #while k!=0 and idx<n:
+             #   out.append(input_arr[idx])
+              #  self.recurse(input_arr,n,idx+1,out,k)
+
+               # self.recurse(input_arr,n,idx+1,out,k)
+        return arr
+'''
+        
+        
+        
+        
