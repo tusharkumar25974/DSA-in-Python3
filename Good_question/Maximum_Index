@@ -1,0 +1,30 @@
+
+#https://practice.geeksforgeeks.org/problems/maximum-index-1587115620/1#
+
+
+class Solution:
+    #Complete this function
+    # Function to find the maximum index difference.
+    def maxIndexDiff(self,A, N): 
+        ##Your code here
+        
+        #make a suffixmax array
+        suffmax = self.suff(A,N)
+        ans = 0
+        j = 0
+        for i in range(N):
+            while(j<N-1 and suffmax[j+1]>=A[i]):
+                j+=1
+            ans = max(ans,j-i)
+        
+        return ans
+    
+    def suff(self,A,N):
+        suffmax = [0]*N
+        suffmax[N-1] = A[N-1]
+        
+        for i in range(N-2,-1,-1):
+            suffmax[i] = max(suffmax[i+1],A[i])
+        return suffmax
+                
+        
